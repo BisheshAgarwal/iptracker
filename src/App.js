@@ -38,7 +38,7 @@ class App extends Component {
             };
             
             this.setState({loading: true, error: false, visible: false, details: resetDetails});
-            axios.get("https://geo.ipify.org/api/v1?apiKey=at_ESmkEmHWwuoaogN8Ui9hGJiA3Anfj&ipAddress=" + this.state.ip)
+            axios.get("https://cors-anywhere.herokuapp.com/https://geo.ipify.org/api/v1?apiKey=at_ESmkEmHWwuoaogN8Ui9hGJiA3Anfj&ipAddress=" + this.state.ip)
                 .then(response => {
                     if(response.data.location.lat && response.data.location.lng) {
                         const updatedDetails = {
@@ -82,7 +82,7 @@ class App extends Component {
         let spinner = null;
         let error = null;
         if(this.state.loading) {
-            spinner = <div class="lds-ring">
+            spinner = <div className="lds-ring">
                         <div></div>
                         <div></div>
                         <div></div>
@@ -113,7 +113,7 @@ class App extends Component {
                         </div>
                         <div className = "detail">
                             <h3 className = "detail__heading">Timezone</h3>
-                            <p className = "detail__text">{this.state.details.ip ? this.state.details.timezone: "--"}</p>
+                            <p className = "detail__text">{this.state.details.ip ? "UTC" + this.state.details.timezone: "--"}</p>
                         </div>
                         <div className = "detail">
                             <h3 className = "detail__heading">Isp</h3>
