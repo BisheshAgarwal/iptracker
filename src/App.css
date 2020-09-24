@@ -67,6 +67,16 @@ body {
     border-bottom-right-radius: 0;
     font-size: 1.6rem;
     color: var(--color-grey-dark-1);
+    
+    -webkit-animation-name: scale;
+    
+    animation-name: scale;
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
 }
 
 .input::-webkit-input-placeholder {
@@ -157,6 +167,40 @@ body {
         -webkit-transform: translateY(0);
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@-webkit-keyframes scale {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scale {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 }
 
