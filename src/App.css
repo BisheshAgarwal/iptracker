@@ -43,7 +43,7 @@ body {
 /*HEADER*/
 
 .header {
-    height: 40vh;
+    height: 26rem;
     background-image: url(images/pattern-bg.png);
     background-size: cover;
     text-align: center;
