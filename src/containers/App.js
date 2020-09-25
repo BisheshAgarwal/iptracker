@@ -3,7 +3,10 @@ import axios from "axios";
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import "./App.css";
-import Aux from "./hoc/Auxiliary";
+import Aux from "../hoc/Auxiliary";
+import Input from "../components/Input/Input";
+import Button from "../components/Button/Button";
+import Spinner from "../components/Spinner/Spinner";
 
 class App extends Component {
     state = {
@@ -13,7 +16,6 @@ class App extends Component {
         long: null,
         visible: false,
         error: false,
-        popupText: "",
         details: {
             ip: "",
             location: null,
@@ -48,7 +50,7 @@ class App extends Component {
                             timezone: response.data.location.timezone,
                             isp: response.data.isp
                         }
-                        this.setState({lat: response.data.location.lat, long: response.data.location.lng,details: updatedDetails, loading: false, visible: true});
+                        this.setState({lat: response.data.location.lat, long: response.data.location.lng, details: updatedDetails, loading: false, visible: true});
                     }
                     else {
                         this.setState({loading: false, error: true});
@@ -82,12 +84,7 @@ class App extends Component {
         let spinner = null;
         let error = null;
         if(this.state.loading) {
-            spinner = <div className="lds-ring">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>;
+            spinner = <Spinner />
         }
         if(this.state.error) {
             error = <div className = "error">Invalid IP address</div>;
@@ -97,10 +94,8 @@ class App extends Component {
             <Aux>
                 <header className = "header">
                     <h1 className = "heading">IP Address Tracker</h1>
-                    <input className = "input" required type = "text" placeholder = "Search for any IP address" onChange = {this.inputChangedHandler} value = {this.state.ip} />
-                    <button className = "btn" onClick = {this.buttonClickedHandler} > 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="000" stroke="#FFF" strokeWidth="3" d="M2 1l6 6-6 6"/></svg>
-                    </button>
+                    <Input  changed = {this.inputChangedHandler} value = {this.state.ip} />
+                    <Button clicked = {this.buttonClickedHandler} />
                     {error}
                     <div className = "details">
                         <div className = "detail">
